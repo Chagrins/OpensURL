@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Opens URL</title>
+  <style>
+    body {
+      background-color: #0D0D0D;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      margin: 0;
+      padding-top: 100px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #FFF;
+    }
+
+    .input-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background-color: #007BFF;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:disabled {
+      background-color: grey;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>Opens URL</h1>
+  <div class="input-container">
+    <input type="text" id="urlInput" placeholder="Enter URL..." />
+    <button id="openButton" disabled>Open</button>
+  </div>
+
+  <script>
+    const urlInput = document.getElementById('urlInput');
+    const openButton = document.getElementById('openButton');
+
+    urlInput.addEventListener('input', () => {
+      openButton.disabled = urlInput.value.trim() === '';
+    });
+
+    openButton.addEventListener('click', () => {
+      const url = urlInput.value.trim();
+      if (url) {
+        window.open(url, '_blank');
+      }
+    });
+  </script>
+</body>
+</html>
